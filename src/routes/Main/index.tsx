@@ -4,20 +4,25 @@ import {
   StackCardInterpolationProps,
 } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import {
   INITIAL,
   LOADING,
   HOME,
   CHOOSE_LOGIN,
   STATISTICS,
+  USER_INFO,
 } from '../../constants/path';
 import { Initial, Loading, ChooseLogin } from '../../components/pages';
 import Home from './Home';
 import Statistics from './Statistics';
+import UserInfo from './UserInfo';
 import * as UiContext from '../../contexts/ui';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
+const HomeDrawer = createDrawerNavigator();
+const StatisticsDrawer = createDrawerNavigator();
 
 const forFade = ({ current }: StackCardInterpolationProps) => ({
   cardStyle: {
@@ -25,11 +30,28 @@ const forFade = ({ current }: StackCardInterpolationProps) => ({
   },
 });
 
+const HomeWithDrawer = () => {
+  return (
+    <StatisticsDrawer.Navigator initialRouteName={HOME}>
+      <StatisticsDrawer.Screen name={HOME} component={Home} />
+      <StatisticsDrawer.Screen name={USER_INFO} component={UserInfo} />
+    </StatisticsDrawer.Navigator>
+  );
+};
+const StatisticsWithDrawer = () => {
+  return (
+    <HomeDrawer.Navigator initialRouteName={STATISTICS}>
+      <HomeDrawer.Screen name={STATISTICS} component={Home} />
+      <HomeDrawer.Screen name={USER_INFO} component={UserInfo} />
+    </HomeDrawer.Navigator>
+  );
+};
+
 const TabRoutes = () => {
   return (
     <Tab.Navigator initialRouteName={HOME}>
-      <Tab.Screen name={HOME} component={Home} />
-      <Tab.Screen name={STATISTICS} component={Statistics} />
+      <Tab.Screen name={HOME} component={HomeWithDrawer} />
+      <Tab.Screen name={STATISTICS} component={StatisticsWithDrawer} />
     </Tab.Navigator>
   );
 };

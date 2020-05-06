@@ -1,22 +1,21 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import { DETAIL, STATISTICS } from '../../constants/path';
-import { Detail, Statistics } from '../../components/pages';
+import { USER_INFO } from '../../constants/path';
+import { UserInfo } from '../../components/pages';
 import { HeaderLeft } from '../Header';
 
 const Stack = createStackNavigator();
 
 const Component = () => {
   return (
-    <Stack.Navigator initialRouteName={STATISTICS}>
+    <Stack.Navigator initialRouteName={USER_INFO}>
       <Stack.Screen
-        name={DETAIL}
-        component={Detail}
+        name={USER_INFO}
+        component={UserInfo}
         options={{
           headerLeft: () => <HeaderLeft />,
         }}
       />
-      <Stack.Screen name={STATISTICS} component={Statistics} />
     </Stack.Navigator>
   );
 };
