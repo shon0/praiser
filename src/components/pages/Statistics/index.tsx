@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 const Component = () => {
   return (
     <View style={styles.container}>
-      <Text>Choose Login</Text>
+      <Text>Statistics</Text>
     </View>
   );
 };
