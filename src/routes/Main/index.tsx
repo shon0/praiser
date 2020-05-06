@@ -41,15 +41,34 @@ const HomeWithDrawer = () => {
 const StatisticsWithDrawer = () => {
   return (
     <HomeDrawer.Navigator initialRouteName={STATISTICS}>
-      <HomeDrawer.Screen name={STATISTICS} component={Home} />
+      <HomeDrawer.Screen name={STATISTICS} component={Statistics} />
       <HomeDrawer.Screen name={USER_INFO} component={UserInfo} />
     </HomeDrawer.Navigator>
   );
 };
 
+const getActiveRouteName = (state: any): string => {
+  if (!state || !state.routes) {
+    return '';
+  }
+  const route = state.routes[state.index];
+  if (route.state) {
+    return getActiveRouteName(route.state);
+  }
+  return route.name;
+};
+
 const TabRoutes = () => {
   return (
-    <Tab.Navigator initialRouteName={HOME}>
+    <Tab.Navigator
+      initialRouteName={HOME}
+      screenOptions={(props: any) => {
+        const routeName = getActiveRouteName(props.route.state);
+        return {
+          tabBarVisible: routeName !== USER_INFO,
+        };
+      }}
+    >
       <Tab.Screen name={HOME} component={HomeWithDrawer} />
       <Tab.Screen name={STATISTICS} component={StatisticsWithDrawer} />
     </Tab.Navigator>

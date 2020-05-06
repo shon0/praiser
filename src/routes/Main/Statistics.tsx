@@ -10,13 +10,13 @@ const Component = () => {
   return (
     <Stack.Navigator initialRouteName={STATISTICS}>
       <Stack.Screen
-        name={DETAIL}
-        component={Detail}
+        name={STATISTICS}
+        component={Statistics}
         options={{
           headerLeft: () => <HeaderLeft />,
         }}
       />
-      <Stack.Screen name={STATISTICS} component={Statistics} />
+      <Stack.Screen name={DETAIL} component={Detail} />
     </Stack.Navigator>
   );
 };
