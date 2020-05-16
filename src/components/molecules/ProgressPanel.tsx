@@ -50,7 +50,7 @@ const Component: React.FC<Props> = props => {
         <HeaderText text="Progress" />
       </View>
       <View style={styles.graphContainer}>
-        <Progress value={completedRatio} />{' '}
+        <Progress value={completedRatio} />
         <View style={styles.textContainer}>
           <View>
             <Text style={styles.text}>Done</Text>

@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const props = {
+const dummy = {
   statistics: {
     numofCompleted: 10,
     numofAll: 25,
@@ -46,9 +46,9 @@ type Props = {
 const Header: React.FC<Props> = props => {
   return (
     <View>
-      <ProgressPanel {...props.statistics} />{' '}
+      <ProgressPanel {...props.statistics} />
       <View style={styles.headerTextContainer}>
-        <HeaderText text="History" />{' '}
+        <HeaderText text="History" />
       </View>
     </View>
   );
@@ -70,9 +70,9 @@ const Component = () => {
   return (
     <Todos
       isEditable={false}
-      todos={props.histories}
+      todos={dummy.histories}
       actions={actions}
-      header={<Header {...props} />}
+      header={<Header {...dummy} />}
     />
   );
 };
