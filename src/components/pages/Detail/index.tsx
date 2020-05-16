@@ -35,7 +35,11 @@ type Params = {
   detail: string;
 };
 
-const Component = () => {
+type Props = {
+  actions: TodoEditActions;
+};
+
+const Component: React.FC<Props> = () => {
   const { goBack } = useNavigation();
   const { params } = useRoute<RouteProp<Record<string, Params>, string>>();
   const {
