@@ -68,3 +68,4 @@ const Component = (props: Props) => {
 };
 
 export default Component;
+export { TodoType };
